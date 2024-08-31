@@ -1,18 +1,15 @@
 # Breast_cancer_tumor
  Build a machine learning model to determine if a tumor is malignant or benign, using features extracted from digital images of breast mass samples
-**Project Overview – breast cancer diagnosis**
+ 
+## Project Overview – breast cancer diagnosis
 
-The key question to answer is: "Can we accurately classify tumors as benign or malignant based on features derived from imaging data?"
+Can we accurately classify tumors as benign or malignant based on features derived from imaging data?
 
 We know that breast cancer diagnosis is critical for early detection and treatment. The dataset includes various features (e.g., radius_mean, texture_mean, perimeter_mean) that are related to the physical characteristics of the tumor, which are crucial for determining whether a tumor is benign or malignant.
 
 The desired outcome is a model that can accurately predict the diagnosis (benign or malignant) based on the provided features.
 
-Factors influencing the diagnosis include the size and shape of the tumor (e.g., radius_mean, area_mean), and the texture of the tumor (e.g., texture_mean). These are key features known to be associated with malignancy.
-
-.
-
-**Data Preparation**
+## Data Preparation
 
 The breast cancer dataset consists of 569 observations and 30 continuous predictor variables.
 
@@ -20,7 +17,7 @@ The binary outcome variable denotes the tumor's malignancy status.
 
 We can proceed directly to the analysis phase, as the data is clean and complete. All columns contain continuous numerical values.
 
-**Exploratory data analysis (EDA)**
+## Exploratory data analysis (EDA)
 
 The EDA focuses on understanding the distribution of various features in the dataset and how they differ between benign and malignant tumors. The analysis uses skewness to identify parametric and non-parametric features, applies statistical tests (T-tests and Wilcoxon rank-sum tests), and visualizes the data distributions.
 
@@ -38,16 +35,14 @@ High skewness values indicate that many features are not normally distributed.
 
 Therefore, in the next steps, I need to conduct tests and select models that are robust to nonparametric data.
 
-**Data Cleansing**
+## Data Cleansing
 
-**Missing Values**
+### Missing Values
 
-### The dataset is clean, with no missing data. All variables are continuous numerical and do not necessitate normalization. Outlier detection and handling will be the next step
+The dataset is clean, with no missing data. All variables are continuous numerical and do not necessitate normalization. Outlier detection and handling will be the next step
 
-**Outliers for parametric distribution**
-
-### Identify outliers using the Z-score method  
-
+### Outliers for parametric distribution
+Identify outliers using the Z-score method
 For all the columns analyzed the decision was made not to remove the outliers because  
 they do not significantly affect the distribution or the correlation with the target variable.
 
@@ -58,10 +53,7 @@ they do not significantly affect the distribution or the correlation with the ta
 | smoothness_worst | 1.23 | 1   | 0.0028 | FALSE |
 | concave points_worst | 0.53 | 1   | 0   | FALSE |
 
-### **Outliers for nonparametric distribution**
-
-###
-
+### Outliers for nonparametric distribution
 Identifies outliers using the Interquartile Range (IQR) method for non- parametric  
 For all the columns analyzed the decision was made not to remove the outliers because  
 they do not significantly affect the distribution or the correlation with the target variable.
@@ -72,37 +64,14 @@ they do not significantly affect the distribution or the correlation with the ta
 | texture_mean | 1.23 | 1   | 0.0028 | FALSE |
 | perimeter_mean | 2.28 | 0.9975 | 0.0121 | FALSE |
 | area_mean | 4.39 | 0.6335 | 0.0265 | FALSE |
-| compactness_mean | 2.81 | 0.973 | 0.0249 | FALSE |
-| concavity_mean | 3.16 | 0.9299 | 0.0007 | FALSE |
-| concave points_mean | 1.76 | 0.9999 | 0.0079 | FALSE |
-| symmetry_mean | 2.64 | 0.9935 | 0.0083 | FALSE |
-| fractal_dimension_mean | 2.64 | 0.9857 | 0.0027 | FALSE |
-| radius_se | 6.68 | 0.1623 | 0.0586 | FALSE |
-| texture_se | 3.51 | 0.8628 | 0.0113 | FALSE |
-| perimeter_se | 6.68 | 0.1623 | 0.0623 | FALSE |
-| area_se | 11.42 | 0.0017 | 0.094 | FALSE |
-| smoothness_se | 5.27 | 0.4056 | 0.044 | FALSE |
-| compactness_se | 4.92 | 0.4914 | 0.0171 | FALSE |
-| concavity_se | 3.87 | 0.7775 | 0.0275 | FALSE |
-| concave points_se | 3.34 | 0.8991 | 0.0041 | FALSE |
-| symmetry_se | 4.75 | 0.5375 | 0.0525 | FALSE |
-| fractal_dimension_se | 4.92 | 0.4914 | 0.0247 | FALSE |
-| radius_worst | 2.99 | 0.9546 | 0.0132 | FALSE |
-| perimeter_worst | 2.64 | 0.9857 | 0.011 | FALSE |
-| area_worst | 6.15 | 0.2349 | 0.0305 | FALSE |
-| compactness_worst | 2.81 | 0.973 | 0.0251 | FALSE |
-| concavity_worst | 2.11 | 0.9993 | 0.0016 | FALSE |
-| symmetry_worst | 4.04 | 0.7306 | 0.0528 | FALSE |
-| fractal_dimension_worst | 4.22 | 0.6823 | 0.0316 | FALSE |
+...
 
 **Conclusion:**  
 Model Robustness: This suggests that your model may be robust to the presence of  
 these outliers, or that the outliers themselves might represent valuable variations in the data that  
 are worth keeping
 
-**Feature engineering**
-
-## Adding new features
+## Feature engineering - adding features
 
 In this dataset, there are various measurements related to breast cancer diagnosis.
 
@@ -128,11 +97,11 @@ Calculation: Subtracts the mean from the worst-case value. Interpretation: This 
 
 Calculation: Calculates the z-score for the worst-case value, which measures how many standard deviations away from the mean it is. Interpretation: A higher z-score indicates that the worst-case value is further away from the mean in terms of standard deviations.
 
-\[5\]:
 
-**Feature selection**
 
-## Multivariable feature selection
+## Feature selection
+
+### Multivariable feature selection
 
 At this stage, I want to filter out columns that do not contribute and reach 30 columns out of 70
 
@@ -140,7 +109,7 @@ using multivariable selection with the following models:
 
 Lasso, Ridge, SVM, GradientBoost, RandomForest, XGBoost
 
-### results
+**results**
 
 The models consistently favored the original features.
 
@@ -152,7 +121,8 @@ More or equal 4: This category contains 48 columns with a score of 4 or higher, 
 
 **We will explore a univariate approach where each feature's relationship with the target variable is assessed**
 
-Univariable feature selection
+
+### Univariable feature selection
 
 Since this method examines each column individually in relation to the target column, we must first assess the distribution of each column. Based on the distribution, we will employ the appropriate statistical test.
 
@@ -160,13 +130,13 @@ For columns with a **normal distribution, we will use a t-test.**
 
 For columns with a **non-normal distribution, we will use the Wilcoxon Rank-Sum test.**
 
-### results
+**results**
 
 Engineered features:
 
 Our univariate analysis showed that the engineered features did not improve the model's ability to classify the target variable as effectively as the original features.
 
-# In summary
+**In summary**
 
 Removed the 'id' column as it was not relevant for prediction.
 
@@ -176,13 +146,14 @@ Removed calculated columns
 
 **We are left with 31 columns for model building.**
 
-**Model Selection**
 
-## When dealing with non-normally distributed data, it's crucial to choose statistical methods that are robust to such deviations. Machine learning algorithms that are less sensitive to data distribution, such as decision trees, random forests, or support vector machines, are often appropriate. Additionally, ensemble methods like bagging or boosting can improve model performance and robustness
+## Model Selection
 
-## Therefore, I've decided to evaluate the performance of the following classification models: SVC, XGBoost, Gradient Boosting, and Random Forest
+When dealing with non-normally distributed data, it's crucial to choose statistical methods that are robust to such deviations. Machine learning algorithms that are less sensitive to data distribution, such as decision trees, random forests, or support vector machines, are often appropriate. Additionally, ensemble methods like bagging or boosting can improve model performance and robustness
 
-## For each model, it prints the confusion matrix and the classification report, which provides precision, recall, F1-score, and support for each class
+Therefore, I've decided to evaluate the performance of the following classification models: SVC, XGBoost, Gradient Boosting, and Random Forest
+
+For each model, it prints the confusion matrix and the classification report, which provides precision, recall, F1-score, and support for each class
 
 **Model selection results**
 
@@ -201,7 +172,7 @@ Continue to the next step of hyperparameter tuning with XGBoost and SVC
 | **Gradient Boosting** | 0.96 | 0.97 | 0.97 | 0.95 | 0.94 | 0.94 | 0.96 |
 | **Random Forest** | 0.96 | 0.99 | 0.98 | 0.98 | 0.94 | 0.96 | 0.97 |
 
-### **Hyperparameters tuning**
+## Hyperparameters tuning
 
 Defines Hyperparameter Grids: Specifies ranges of hyperparameters for SVC and XGBoost to be tuned.
 
@@ -231,7 +202,7 @@ In a medical context where detecting malignant cases accurately is crucial, XGBo
 | **Tuned SVC** | 0.95 | 0.98 | 0.96 | 0.97 | 0.9 | 0.93 | 0.95 |
 | **SVC** | 0.91 | 1   | 0.95 | 1   | 0.83 | 0.9 | 0.94 |
 
-**CROSS-VALIDATION**
+## CROSS-VALIDATION
 
 **Models:**
 
