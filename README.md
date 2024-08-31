@@ -71,29 +71,7 @@ they do not significantly affect the distribution or the correlation with the ta
 | radius_mean | 2.46 | 0.9934 | 0.0141 | FALSE |
 | texture_mean | 1.23 | 1   | 0.0028 | FALSE |
 | perimeter_mean | 2.28 | 0.9975 | 0.0121 | FALSE |
-| area_mean | 4.39 | 0.6335 | 0.0265 | FALSE |
-| compactness_mean | 2.81 | 0.973 | 0.0249 | FALSE |
-| concavity_mean | 3.16 | 0.9299 | 0.0007 | FALSE |
-| concave points_mean | 1.76 | 0.9999 | 0.0079 | FALSE |
-| symmetry_mean | 2.64 | 0.9935 | 0.0083 | FALSE |
-| fractal_dimension_mean | 2.64 | 0.9857 | 0.0027 | FALSE |
-| radius_se | 6.68 | 0.1623 | 0.0586 | FALSE |
-| texture_se | 3.51 | 0.8628 | 0.0113 | FALSE |
-| perimeter_se | 6.68 | 0.1623 | 0.0623 | FALSE |
-| area_se | 11.42 | 0.0017 | 0.094 | FALSE |
-| smoothness_se | 5.27 | 0.4056 | 0.044 | FALSE |
-| compactness_se | 4.92 | 0.4914 | 0.0171 | FALSE |
-| concavity_se | 3.87 | 0.7775 | 0.0275 | FALSE |
-| concave points_se | 3.34 | 0.8991 | 0.0041 | FALSE |
-| symmetry_se | 4.75 | 0.5375 | 0.0525 | FALSE |
-| fractal_dimension_se | 4.92 | 0.4914 | 0.0247 | FALSE |
-| radius_worst | 2.99 | 0.9546 | 0.0132 | FALSE |
-| perimeter_worst | 2.64 | 0.9857 | 0.011 | FALSE |
-| area_worst | 6.15 | 0.2349 | 0.0305 | FALSE |
-| compactness_worst | 2.81 | 0.973 | 0.0251 | FALSE |
-| concavity_worst | 2.11 | 0.9993 | 0.0016 | FALSE |
-| symmetry_worst | 4.04 | 0.7306 | 0.0528 | FALSE |
-| fractal_dimension_worst | 4.22 | 0.6823 | 0.0316 | FALSE |
+......
 
 **Conclusion:**  
 Model Robustness: This suggests that your model may be robust to the presence of  
@@ -176,13 +154,13 @@ Removed calculated columns
 
 **We are left with 31 columns for model building.**
 
-**Model Selection**
+## Model Selection**
 
-## When dealing with non-normally distributed data, it's crucial to choose statistical methods that are robust to such deviations. Machine learning algorithms that are less sensitive to data distribution, such as decision trees, random forests, or support vector machines, are often appropriate. Additionally, ensemble methods like bagging or boosting can improve model performance and robustness
+When dealing with non-normally distributed data, it's crucial to choose statistical methods that are robust to such deviations. Machine learning algorithms that are less sensitive to data distribution, such as decision trees, random forests, or support vector machines, are often appropriate. Additionally, ensemble methods like bagging or boosting can improve model performance and robustness
 
-## Therefore, I've decided to evaluate the performance of the following classification models: SVC, XGBoost, Gradient Boosting, and Random Forest
+Therefore, I've decided to evaluate the performance of the following classification models: SVC, XGBoost, Gradient Boosting, and Random Forest
 
-## For each model, it prints the confusion matrix and the classification report, which provides precision, recall, F1-score, and support for each class
+For each model, it prints the confusion matrix and the classification report, which provides precision, recall, F1-score, and support for each class
 
 **Model selection results**
 
